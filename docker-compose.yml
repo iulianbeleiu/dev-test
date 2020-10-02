@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+    nginx:
+        image: nginx:latest
+        container_name: react-app
+        volumes:
+            - ./app:/usr/share/nginx/html
+        ports:
+        - 8080:80
