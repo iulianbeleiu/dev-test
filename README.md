@@ -6,3 +6,5 @@
     Nginx static content: http://localhost:8080
 ```
 
+#### Bash inside mongo container
+```docker exec -it mongo-db bash```

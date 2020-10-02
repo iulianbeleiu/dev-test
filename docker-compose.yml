@@ -1,10 +1,23 @@
 version: '3.7'
 
+volumes:
+    data_mongo_db:
+
 services:
     nginx:
         image: nginx:latest
         container_name: react-app
+        restart: always
         volumes:
             - ./app:/usr/share/nginx/html
         ports:
         - 8080:80
+    mongo:
+        image: mongo:latest
+        container_name: mongo-db
+        restart: always
+        volumes:
+            - data_mongo_db:/data/db
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: root
+            MONGO_INITDB_ROOT_PASSWORD: root
