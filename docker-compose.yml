@@ -28,6 +28,6 @@ services:
             - "./hapi:/src"
         # end
         ports:
-            - "3000:3000"
+            - "3030:3000"
         external_links:
             - mongo
