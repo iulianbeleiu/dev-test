@@ -5,13 +5,13 @@ volumes:
 
 services:
     nginx:
-        image: nginx:latest
+        build: ./react-nginx
         container_name: react-app
         restart: always
-        volumes:
-            - ./app:/usr/share/nginx/html
+        # volumes:
+        #     - ./app:/usr/share/nginx/html
         ports:
-        - 8080:80
+        - 80:80
     mongo:
         image: mongo:latest
         container_name: mongo-db
