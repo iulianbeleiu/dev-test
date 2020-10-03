@@ -21,3 +21,10 @@ services:
         environment:
             MONGO_INITDB_ROOT_USERNAME: root
             MONGO_INITDB_ROOT_PASSWORD: root
+    api:
+        container_name: api
+        build: ./hapi
+        volumes:
+            - "./hapi:/src"
+        ports:
+            - "3000:3000"
