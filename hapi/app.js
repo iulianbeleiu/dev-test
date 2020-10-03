@@ -1,5 +1,4 @@
 const Hapi = require("hapi");
-const { request } = require("http");
 const OS = require("os");
 var Mongoose = require('mongoose');
 
@@ -10,20 +9,14 @@ var server = new Hapi.Server({
     });
 
 Mongoose.connect(
-        "mongodb://mongo:27017/dev_test",
-        {useNewUrlParser: true}
-    );
-var db = Mongoose.connection;
-
-Mongoose
-  .connect(
     'mongodb://mongo:27017/dev_test',
     { useNewUrlParser: true }
-  )
-  .then(() => console.log('MongoDB Connected'))
-  .catch(err => console.log(err));
+).then(() => console.log('MongoDB Connected')
+).catch(err => console.log(err));
 
 var db = Mongoose.connection;
+
+const Person = require('./models/Person')
 
 server.route({
     method: "GET",
@@ -37,7 +30,64 @@ server.route({
     method: "GET",
     path: "/mongo/works",
     handler: (request, h) => {
-        return Mongoose.connection.readyState;
+        return h.response(Mongoose.connection.readyState);
+    }
+})
+
+server.route({
+    method: "GET",
+    path: "/persons",
+    handler: async (request, h) => {
+        try {
+            var persons = await Person.aggregate(
+                [
+                    {
+                      $group: {
+                        _id: "$age",
+                        count: { $sum: 1 },
+                      }
+                    },
+                    { $sort: { count: 1 } }
+                  ]
+            );
+
+            return h.response(persons);
+        } catch(error) {
+            return h.response(error).code(500);
+        }
+    }
+})
+
+server.route({
+    method: "POST",
+    path: "/persons",
+    handler: async (request, h) => {
+        try {
+            var person = new Person();
+            var persons = [{
+                    name: 'Test name1',
+                    age: 25
+                }, {
+                    name: 'Test name2',
+                    age: 25
+                }, {
+                    name: 'Test name3',
+                    age: 29
+                }, {
+                    name: 'Test name4',
+                    age: 34
+                }, {
+                    name: 'Test name5',
+                    age: 25
+                }
+            ]
+
+            result = await person.collection.insertMany(persons);
+
+            return h.response(result);
+        } catch(error) {
+            return h.response(error).code(500);
+        }
     }
 })
 

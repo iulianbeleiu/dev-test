@@ -18,13 +18,16 @@ services:
         restart: always
         volumes:
             - data_mongo_db:/data/db
-        environment:
-            MONGO_INITDB_ROOT_USERNAME: root
-            MONGO_INITDB_ROOT_PASSWORD: root
+        ports:
+            - '27017:27017'
     api:
         container_name: api
         build: ./hapi
+        # start why this is not working
         volumes:
             - "./hapi:/src"
+        # end
         ports:
             - "3000:3000"
+        external_links:
+            - mongo
