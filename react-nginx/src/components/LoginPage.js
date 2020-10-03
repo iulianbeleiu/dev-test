@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router } from "react-router-dom";
 import API from '../api';
 
 class LoginPage extends Component {
@@ -19,12 +20,14 @@ class LoginPage extends Component {
         API.get(`/mongo/works`)
         .then(res => {
             if (200 === res.status) {
-                console.log('Mongo works!')
+                console.log('Mongo woks!');
+                window.location = "/dashboard";
             }
-        })
+        });
     }
     render() {
         return (
+            <Router>
             <div className="LoginPage">
                 <form onSubmit={this.handleSubmit}>
                     <h3>Log In</h3>
@@ -50,7 +53,9 @@ class LoginPage extends Component {
                     </div>
                     <button type="submit" className="btn btn-primary btn-block">Submit</button>
                 </form>
+
             </div>
+            </Router>
         );
     }
 }
