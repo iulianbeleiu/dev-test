@@ -1,16 +1,21 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
-import LoginPage from './components/LoginPage';
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import { Provider } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import DashboardPage from './components/DashboardPage';
+
+import LoginPage from "./components/LoginPage";
+import DashboardPage from "./components/DashboardPage";
+
+import store from "./store";
 
 function App() {
   return (
-    <Router>
-      <Route exact path="/" component={LoginPage} />
-      <Route exact path="/dashboard" component={DashboardPage} />
-    </Router>
+    <Provider store={store}>
+      <div className="App">
+        <LoginPage />
+      </div>
+    </Provider>
   );
 }
 
