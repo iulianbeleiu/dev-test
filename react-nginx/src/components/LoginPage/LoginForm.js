@@ -40,6 +40,7 @@ class LoginForm extends Component {
               placeholder="Enter email"
               value={this.state.email}
               onChange={this.handleChange}
+              required="required"
             />
           </div>
           <div className="form-group">
@@ -49,6 +50,7 @@ class LoginForm extends Component {
               type="password"
               className="form-control"
               placeholder="Enter password"
+              required="required"
             />
           </div>
           <button type="submit" className="btn btn-primary btn-block">
