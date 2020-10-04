@@ -1,33 +1,35 @@
-version: '3.7'
+version: "3.7"
 
 volumes:
-    data_mongo_db:
+  data_mongo_db:
 
 services:
-    nginx:
-        build: ./react-nginx
-        container_name: react-app
-        restart: always
-        # volumes:
-        #     - ./app:/usr/share/nginx/html
-        ports:
-        - 80:80
-    mongo:
-        image: mongo:latest
-        container_name: mongo-db
-        restart: always
-        volumes:
-            - data_mongo_db:/data/db
-        ports:
-            - '27017:27017'
-    api:
-        container_name: api
-        build: ./hapi
-        # start why this is not working
-        volumes:
-            - "./hapi:/src"
-        # end
-        ports:
-            - "3030:3000"
-        external_links:
-            - mongo
+  nginx:
+    build: ./react-nginx
+    container_name: react-app
+    restart: always
+    # volumes:
+    #     - ./app:/usr/share/nginx/html
+    ports:
+      - 80:80
+    depends_on:
+      - api
+  mongo:
+    image: mongo:latest
+    container_name: mongo-db
+    restart: always
+    volumes:
+      - data_mongo_db:/data/db
+    ports:
+      - "27017:27017"
+  api:
+    container_name: api
+    build: ./hapi
+    # start why this is not working
+    volumes:
+      - "./hapi:/src"
+    # end
+    ports:
+      - "3030:3000"
+    depends_on:
+      - mongo
