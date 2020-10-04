@@ -10,8 +10,9 @@ class DummyDataPage extends Component {
   render() {
     const personItems = this.props.persons.map((person) => (
       <div key={person._id}>
-        <p>{person.name}</p>
-        <p>{person.age}</p>
+        <p>
+          Person {person.name} has age {person.age}
+        </p>
       </div>
     ));
     return (
