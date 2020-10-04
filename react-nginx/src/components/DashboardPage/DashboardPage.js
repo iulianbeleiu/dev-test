@@ -6,11 +6,26 @@ import { Link } from "react-router-dom";
 class DashboardPage extends Component {
   render() {
     return (
-      <div>
-        <h1>Dashboard</h1>
-        <Link to="/time">Time</Link>
-        <Link to="/dummy/data">Dummy</Link>
-      </div>
+      <main className="content">
+        <h1 className="text-center my-5">Dashboard</h1>
+        <div className="row ">
+          <div className="col-md-8 col-sm-10 mx-auto p-0">
+            <div className="card p-3">
+              <div className="">
+                <Link to="/dummy/data" className="btn btn-primary btn-block">
+                  Create Dummy Data
+                </Link>
+              </div>
+              <hr></hr>
+              <div className="">
+                <Link to="/time" className="btn btn-primary btn-block">
+                  Aggregation Time
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
     );
   }
 }

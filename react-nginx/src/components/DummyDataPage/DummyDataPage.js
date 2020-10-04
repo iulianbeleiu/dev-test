@@ -9,16 +9,33 @@ class DummyDataPage extends Component {
   }
   render() {
     const personItems = this.props.persons.map((person) => (
-      <div key={person._id}>
-        <p>
-          Person {person.name} has age {person.age}
-        </p>
-      </div>
+      <tr key={person._id}>
+        <td>{person.name}</td>
+        <td>{person.age}</td>
+      </tr>
     ));
     return (
       <div className="DummyDataPage">
-        <h1>DummyDataPage</h1>
-        {personItems}
+        <main className="content">
+          <h1 className="text-center my-5">Dummy data created</h1>
+          <div className="row ">
+            <div className="col-md-8 col-sm-10 mx-auto p-0">
+              <div className="card p-3">
+                <div className="">
+                  <table className="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Person</th>
+                        <th scope="col">Age</th>
+                      </tr>
+                    </thead>
+                    <tbody>{personItems}</tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
       </div>
     );
   }

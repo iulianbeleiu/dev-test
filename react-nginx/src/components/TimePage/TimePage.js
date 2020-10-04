@@ -9,19 +9,38 @@ class TimePage extends Component {
   }
   render() {
     const aggregateItems = this.props.aggregate.map((item) => (
-      <div key={item._id}>
-        <p>
-          A number of {item.count} persons have age {item._id}
-        </p>
-      </div>
+      <tr key={item._id}>
+        <td>{item.count}</td>
+        <td>{item._id}</td>
+      </tr>
     ));
-
     const time = this.props.time;
     return (
       <div className="TimePage">
-        <h1>TimePage</h1>
-        Aggregation Took: {time}ms
-        {aggregateItems}
+        <main className="content">
+          <h1 className="text-center my-5">Aggregation time</h1>
+          <div className="row ">
+            <div className="col-md-8 col-sm-10 mx-auto p-0">
+              <div className="card p-3">
+                <p>
+                  Aggregation Took:{" "}
+                  <span className="font-weight-bold">{time}ms</span>
+                </p>
+                <div className="">
+                  <table className="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Number of persons</th>
+                        <th scope="col">Age</th>
+                      </tr>
+                    </thead>
+                    <tbody>{aggregateItems}</tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
       </div>
     );
   }
