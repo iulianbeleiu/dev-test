@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import LoginPage from "../LoginPage/LoginForm";
+import LoginPage from "../LoginPage/LoginPage";
 import DashboardPage from "../DashboardPage/DashboardPage";
 
 class HomePage extends Component {

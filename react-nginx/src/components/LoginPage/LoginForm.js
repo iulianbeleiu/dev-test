@@ -31,7 +31,6 @@ class LoginForm extends Component {
     return (
       <div className="LoginForm">
         <form onSubmit={this.handleSubmit}>
-          <h3>Log In</h3>
           <div className="form-group">
             <label>Email address</label>
             <input
