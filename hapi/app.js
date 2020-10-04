@@ -8,7 +8,7 @@ var server = new Hapi.Server({
   routes: { cors: true },
 });
 
-Mongoose.connect("mongodb://mongo:27017/dev_test", { useNewUrlParser: true })
+Mongoose.connect("mongodb://mongo:27017/persons", { useNewUrlParser: true })
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
 
