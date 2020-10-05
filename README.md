@@ -13,6 +13,13 @@
 
 `docker exec -it mongo-db bash`
 
+#### Resources
+```
+    Redux state: https://www.youtube.com/watch?v=93p3LxR9xfM
+    HapiJS: https://hapi.dev/
+    Mongoose: https://mongoosejs.com/
+```
+
 #### Frontend images
 
 ![alt text](https://github.com/iulianbeleiu/dev-test/blob/main/fe-images/login.png?raw=true)
