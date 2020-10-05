@@ -28,7 +28,11 @@ server.route({
   method: "GET",
   path: "/mongo/works",
   handler: (request, h) => {
-    return h.response(Mongoose.connection.readyState);
+    if (Mongoose.connection.readyState) {
+      return h.response(Mongoose.connection.readyState);
+    } else {
+      return h.response("Service Unavailable.").code(503);
+    }
   },
 });
 
