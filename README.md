@@ -12,3 +12,16 @@
 #### Bash inside mongo container
 
 `docker exec -it mongo-db bash`
+
+#### Frontend images
+
+![alt text](https://github.com/iulianbeleiu/dev-test/blob/main/fe-images/login.png?raw=true)
+
+
+![alt text](https://github.com/iulianbeleiu/dev-test/blob/main/fe-images/dashboard.png?raw=true)
+
+
+![alt text](https://github.com/iulianbeleiu/dev-test/blob/main/fe-images/dummy.png?raw=true)
+
+
+![alt text](https://github.com/iulianbeleiu/dev-test/blob/main/fe-images/aggregation.png?raw=true)
